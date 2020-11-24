@@ -67,13 +67,21 @@ final class AppTest extends TestCase
      */
     public function testGetTwoNumbersV2_1(): void
     {
-        $trueOutput = new ListV2(7, new ListV2(0, new ListV2(8)));
+        $trueOutput = [7, 0, 8];
 
         $list1 = new ListV2(243);
 
         $list2 = new ListV2(564);
 
-        $realOutput = OutputV2::addTwoNumbers($list1, $list2);
+        $output = OutputV2::addTwoNumbers($list1, $list2);
+
+        $realOutput = [
+            $output->value,
+
+            $output->node->value,
+
+            $output->node->node->value,
+        ];
 
         $this->assertEquals($trueOutput, $realOutput);
     }
@@ -99,13 +107,31 @@ final class AppTest extends TestCase
      */
     public function testGetTwoNumbersV2_3(): void
     {
-        $trueOutput = new ListV2(8, new ListV2(9, new ListV2(9, new ListV2(9, new ListV2(0, new ListV2(0, new ListV2(0, new ListV2(1))))))));
+        $trueOutput = [8, 9, 9, 9, 0, 0, 0, 1];
 
         $list1 = new ListV2(9999999);
 
         $list2 = new ListV2(9999);
 
-        $realOutput = OutputV2::addTwoNumbers($list1, $list2);
+        $output = OutputV2::addTwoNumbers($list1, $list2);
+
+        $realOutput = [
+            $output->value,
+
+            $output->node->value,
+
+            $output->node->node->value,
+
+            $output->node->node->node->value,
+
+            $output->node->node->node->node->value,
+
+            $output->node->node->node->node->node->value,
+
+            $output->node->node->node->node->node->node->value,
+
+            $output->node->node->node->node->node->node->node->value,
+        ];
 
         $this->assertEquals($trueOutput, $realOutput);
     }
